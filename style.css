@@ -22,7 +22,7 @@ body {
     padding: 0;
     position: relative;
     color: white;
-    overflow-y: hidden;
+    overflow-x: hidden;
     /* background: url('casdasd.jpg') center center / cover no-repeat fixed; */
     /* background: rgb(65, 60, 60); */
 }
