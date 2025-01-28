@@ -1,5 +1,4 @@
-                                    //NAVBAR
-
+                                /// NAVBAR
 const navbar = document.getElementsByClassName('navbar')[0];
 
 window.onload = function() {
@@ -12,7 +11,7 @@ const hiddenNav = document.querySelector('.hiddenNav');
 let toggleState = true;
 
 hamburger.addEventListener('click', (event) => {
-    event.stopPropagation(); // Megakadályozza, hogy a kattintás esemény továbbterjedjen a dokumentumra
+    event.stopPropagation();
     hamburger.classList.toggle('open');
 
     if (toggleState) {
@@ -26,8 +25,7 @@ hamburger.addEventListener('click', (event) => {
     toggleState = !toggleState;
 });
 
-// Bezárás, ha a menün kívül kattintasz
-document.addEventListener('click', (event) => {
+function closeMenu(event) {
     if (!hiddenNav.contains(event.target) && !hamburger.contains(event.target)) {
         if (hiddenNav.classList.contains('open')) {
             hiddenNav.classList.remove('open');
@@ -36,4 +34,7 @@ document.addEventListener('click', (event) => {
             toggleState = true;
         }
     }
-});
+}
+
+document.addEventListener('click', closeMenu);
+document.addEventListener('touchstart', closeMenu);
