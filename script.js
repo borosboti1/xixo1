@@ -17,9 +17,8 @@ hamburger.addEventListener('click', (event) => {
     if (toggleState) {
         hiddenNav.classList.remove('close');
         hiddenNav.classList.add('open');
+        hiddenNav.style.display = "flex";
     } else {
-        hiddenNav.classList.remove('open');
-        hiddenNav.classList.add('close');
     }
 
     toggleState = !toggleState;
@@ -30,6 +29,8 @@ function closeMenu(event) {
         if (hiddenNav.classList.contains('open')) {
             hiddenNav.classList.remove('open');
             hiddenNav.classList.add('close');
+            setTimeout(() => hiddenNav.style.display = "none", 400)
+
             hamburger.classList.remove('open');
             toggleState = true;
         }

@@ -120,31 +120,13 @@ body {
     transition: all 1s ease;
 }
 
-.hamburger.open div:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.hamburger.open div:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-}
-
-.hamburger.open div:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-}
-
-.hamburger.open {
-    transform: translateX(35px) translateY(55px);
-}
-
 .hamburger.open div {
-    background-color: red;
-    z-index: 100000000005;
+    display: none;
 }
 .hiddenNav {
     z-index: 1000000;
     position: absolute;
-    display: none;
+    display: flex;
     flex-direction: column;
     /* justify-content: start; */
     background: var(--atlatszo-lila);
@@ -166,8 +148,7 @@ body {
 }
 
 .hiddenNav.close {
-    display: none;
-    right: -248px;
+    /* display: none; */
     animation: navBarAnim1 0.5s forwards;
 }
 
@@ -307,7 +288,7 @@ body {
     font-weight: 800;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
 }
 
 .mainButton1 {
@@ -365,5 +346,13 @@ body {
     .hamburger div {
         display: block;
     }
+    .main {
+        max-width: 386px;
+    }
+    .mainButton1 {
+        padding: 5px 48px;
+    }
+    .mainButton2 {
+        padding: 5px 42px;
+    }
 }
-
