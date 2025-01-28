@@ -144,7 +144,7 @@ body {
 .hiddenNav {
     z-index: 1000000;
     position: absolute;
-    display: flex;
+    display: none;
     flex-direction: column;
     /* justify-content: start; */
     background: var(--atlatszo-lila);
@@ -160,11 +160,13 @@ body {
 }
 
 .hiddenNav.open {
-    /* right: 16px; */
+    right: 16px;
+    display: flex;
     animation: navBarAnim 0.5s forwards;
 }
 
 .hiddenNav.close {
+    display: none;
     right: -248px;
     animation: navBarAnim1 0.5s forwards;
 }
