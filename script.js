@@ -1,4 +1,22 @@
-                                /// NAVBAR
+/// jatekos mutato
+
+const serverIP = "hypixel.net";
+fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
+  .then((response) => response.json())
+  .then((data) => {
+    const playerCount = data.players ? data.players.online : 0;
+    document.getElementById("playerCount").innerText = 
+      `${playerCount} játékos`;
+  })
+  .catch((error) => {
+    document.getElementById("playerCount").innerText = 
+      "Nem sikerült lekérdezni a szerver állapotát.";
+    console.error("Hiba", error);
+  });
+
+
+  
+/// NAVBAR
 const navbar = document.getElementsByClassName('navbar')[0];
 
 window.onload = function() {

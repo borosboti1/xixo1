@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Overpass+Mono:wght@300..700&family=Press+Start+2P&family=Righteous&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Overpass+Mono:wght@300..700&family=Press+Start+2P&family=Righteous&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=VT323&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
     --mc-font: italic 0.8rem "Press Start 2P", sans-serif;
@@ -17,12 +16,57 @@
     box-sizing: border-box;
 }
 
+html{
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
     margin: 0;
     padding: 0;
     position: relative;
     color: white;
-    overflow-x: hidden;
+    /* overflow-x: hidden;     */
+}
+
+.custom-scrollbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100vh;
+    background: #6f00b91a;
+    z-index: 100000;
+    box-shadow: #460db1 0 0 15px;
+}
+  
+.custom-thumb {
+    width: 90%;
+    background: linear-gradient(rgb(111, 46, 216), rgb(45, 56, 177)); 
+    border-radius: 4px;
+    position: absolute;
+    cursor: pointer;
+}
+  
+.custom-thumb:hover {
+    background: linear-gradient(rgb(88, 31, 180), rgb(34, 44, 158));
+}
+  
+::-moz-selection { 
+    color: #fff;
+    background: #fff;
+    border-radius: 10px;
+}
+  
+::selection {
+    color: #fff;
+    background: #7800af;
+    border-radius: 10px;
 }
 
 .HeaderBackground {
@@ -127,46 +171,90 @@ main {
     left: 24px;
     right: 24px;
     align-items: center;
-    gap: 20px;
-    background: linear-gradient(to right, #000000ab, #00000080);
+    /* background: linear-gradient(to right, #000000ab, #00000080); */
+    background: #000000c7;
     border-radius: 15px;
     width: 90%;
+    height: 40px;
     max-width: 1160px;
     transition: top 1s ease;
 }
 
+.navsnLogo {
+    width: 33px;
+    height: 33px;
+    margin-left: 8px;
+    
+}
+
+.navsnTitle {
+    position: relative;
+    display: inline-block;
+    left: 5px;
+
+    color: transparent;
+    /* font-family: 'Futura PT', Futura, sans-serif; */
+    font: var(--mc-font);
+    /* letter-spacing: -1px; */
+    letter-spacing: 1px;
+    text-shadow: 
+        0 0 25px rgba(156, 39, 176, 0.4),
+        0 0 40px rgba(156, 39, 176, 0.3),
+        0 0 55px rgba(156, 39, 176, 0.2),
+        0 0 2px rgba(255,255,255,0.1);
+
+
+    background: linear-gradient(
+        130deg,
+        #6100b6 30%,
+        #b625cf 50%,
+        #6100b6 70%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400% 100%;
+    animation: text-shine 8s linear infinite;
+}
+
+@keyframes text-shine {
+    0% {background-position: -200% 0;}
+    100% {background-position: 200% 0;}
+}
+
 .navbar a {
     position: relative;
-    color: var(--white-color);
+    padding: 14px 0;
     text-decoration: none;
     font: var(--mc-font);
-    padding: 14px 0;
-    transition: all 0.3s ease;
+    
+    background: linear-gradient(90deg, 
+        #1100ffab 0%,
+        #55bbffab 50%,
+        #1100ffab 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 200%;
+    background-position: 100% 0;
+    transition: background-position 0.5s ease;
 }
 
-.navbar a::after {
-    content: ''; 
-    position: absolute; 
-    left: 0;
-    bottom: 10px; 
-    width: 0;
-    height: 2px;
-    background: var(--white-color); 
-    transition: width 0.4s ease;
+.navbar a:hover {
+    background-position: 0% 0;
 }
 
-.navbar a:hover::after {
-    width: 100%;
-}
 
-.navbar a:active::after {
-    width: 0;
-    transition: width 0.06s ease;
+.navbar a:active {
+    background-position: 100% 0;
+    transition: background-position 0.1s ease;
 }
 
 .navbar-right {
     display: flex;
-    margin-left: 12px;
+    align-items: center;
+    margin-left: 64px;
     gap: 24px;
 }
 
@@ -207,6 +295,7 @@ main {
 .hamburger.open div {
     display: none;
 }
+
 .hiddenNav {
     z-index: 1000000;
     position: absolute;
@@ -215,7 +304,7 @@ main {
     gap: 1rem;
     backdrop-filter: blur(2px);
     /* background: #940094a6; */
-    background: linear-gradient(130deg, #da3fdabb, #5f005fabmi);
+    background: linear-gradient(130deg, #da3fdabb, #5f005fab);
 
     max-width: 248px;
     width: 248px;
@@ -283,33 +372,34 @@ main {
 }
 
 .hiddenNavCim h1 {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .hiddenNavlinks {
     position: relative;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column; 
+    align-items: center;
     gap: 1.6rem;
-    top: 5rem;
-    left: 1.5rem;
+    top: 2rem;
+    /* left: 1.5rem; */
 }
 
 .hiddenNav a {
     position: relative;
-    /* background: linear-gradient(90deg,#0c1cb3, #6b1494); */
-    /* background-size: 0% 100%; */
-    /* background-repeat: no-repeat; */
-    padding: 15px 0 15px 5px;
+    padding: 10px 0;
+    width: 118px;
+    text-align: center;
+
     color: var(--white-color);
-    font: var(--mc-font);
     text-decoration: none;
-    /* clip-path: polygon(20% 0, 70% 0, 63% 27%, 70% 50%, 63% 70%, 70% 100%, 0 100%, 0 0); */
-    border-radius: 6px;
-    z-index: 1;
-    transition: background-size 0.5s ease-in-out;  
+    font: var(--mc-font);
+    font-size: 0.85rem;
+
+    transition: all 0.3s ease;
 
 }
+
 /* 
 .hiddenNav a:hover {
     background-size: 100% 100%;
@@ -365,7 +455,6 @@ main {
 .mainsnH1 {
     justify-content: center;
     letter-spacing: 2px;
-    
 }
 
 .mainButtons {
